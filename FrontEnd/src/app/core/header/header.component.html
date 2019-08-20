@@ -1,0 +1,95 @@
+<mat-sidenav-container class="sidenav-container">
+    <!-- sidenav -->
+    <mat-sidenav #drawer class="sidenav" [mode]='over' [opened]='false'>
+        <!-- sidebar for mobile -->
+        <mat-nav-list>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="news">News</a>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="shop">Shop</a>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="support">Support</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="about-us">About</a>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="the-team">The Team</a>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="careers">Careers</a>
+            <a mat-list-item (click)="drawer.toggle()" routerLink="contact-us">Contact Us</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <!-- logic to decide to use mobile or desktop header -->
+            <ng-template *ngIf="isHandset$ | async; then mobileHeader; else desktopHeader"></ng-template>
+
+            <!-- mobile header -->
+            <ng-template #mobileHeader>
+                <!-- sidenav icon -->
+                <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                </button>
+
+                <!--- logo, links to home-->
+                <a routerLink="">
+                    <img src="https://placeholder.pics/svg/90/DEDEDE/555555/logo" alt="logo" class="logo">
+                </a>
+
+                <!-- fills up white space -->
+                <span class="spacer"></span>
+
+                <!-- buttons on the right -->
+                <button mat-button [matMenuTriggerFor]="games">Games<mat-icon>arrow_drop_down</mat-icon></button>
+                <mat-menu #games="matMenu">
+                    <button mat-menu-item routerLink="massicot">Massicot</button>
+                    <button mat-menu-item routerLink="ocher">Ocher</button>
+                    <button mat-menu-item routerLink="orpiment">Orpiment</button>
+                    <button mat-menu-item routerLink="sinopia">Sinopia</button>
+                </mat-menu>
+                <button mat-button [matMenuTriggerFor]="account">Account<mat-icon>arrow_drop_down</mat-icon></button>
+                <mat-menu #account="matMenu">
+                    <button mat-menu-item routerLink="login">Login</button>
+                    <button mat-menu-item routerLink="account-settings" (click)="loginRequired()">Account
+                        Settings</button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item routerLink="create-account">Create a Free Account</button>
+                </mat-menu>
+            </ng-template>
+
+            <!-- desktop header -->
+            <ng-template #desktopHeader>
+                <!-- buttons on the left -->
+                <div class="w-100">
+                    <button mat-button [matMenuTriggerFor]="games">Games<mat-icon>arrow_drop_down</mat-icon></button>
+                    <mat-menu #games="matMenu">
+                        <button mat-menu-item routerLink="massicot">Massicot</button>
+                        <button mat-menu-item routerLink="ocher">Ocher</button>
+                        <button mat-menu-item routerLink="orpiment">Orpiment</button>
+                        <button mat-menu-item routerLink="sinopia">Sinopia</button>
+                    </mat-menu>
+                    <button mat-button routerLink="news">News</button>
+                    <button mat-button routerLink="shop">Shop</button>
+                </div>
+
+                <!-- logo, links to home -->
+                <a class="" routerLink="">
+                    <img src="https://placeholder.pics/svg/120/DEDEDE/555555/logo" alt="logo" class="logo">
+                </a>
+
+                <!-- buttons on the right -->
+                <div class="w-100 flex">
+                    <div class="ml-auto">
+                        <button mat-button routerLink="support">Support</button>
+                        <button mat-button [matMenuTriggerFor]="account">Account<mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+                        <mat-menu #account="matMenu">
+                            <button mat-menu-item routerLink="login">Login</button>
+                            <button mat-menu-item routerLink="account-settings" (click)="loginRequired()">Account
+                                Settings</button>
+                            <mat-divider></mat-divider>
+                            <button mat-menu-item routerLink="create-account">Create a Free Account</button>
+                        </mat-menu>
+                    </div>
+                </div>
+            </ng-template>
+        </mat-toolbar>
+
+        <!-- angular content injector -->
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,19 @@
+/* sidenav consumes whole website */
+.sidenav-container {
+    height: 100%;
+}
+
+/* set sidenavs width */
+.sidenav {
+    width: 200px;
+}
+
+/* round the logo */
+.logo {
+    border-radius: 50%;
+}
+
+/* push content to the right */
+.flex {
+    display: flex;
+}

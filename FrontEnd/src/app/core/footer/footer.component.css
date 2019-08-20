@@ -1,0 +1,12 @@
+/* toolbar  */
+.mat-toolbar-row {
+    justify-content: center;
+    height: 50%;
+    font-size: 1rem;
+}
+
+/* format brand image */
+.brand {
+    margin-top: 5px;
+    border-radius: 25%;
+}

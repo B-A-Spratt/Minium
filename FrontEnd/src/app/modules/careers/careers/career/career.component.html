@@ -1,0 +1,48 @@
+<h3 class="text-center">New Job Posting</h3>
+<br>
+<form (ngSubmit)="onSubmit(careerForm)" #careerForm="ngForm">
+    <input type="hidden" name="Id" [value]="careerService.formData.Id">
+    <input type="hidden" name="postDate" [value]="careerService.formData.PostDate">
+
+    <div class="form-group">
+        <select name="JobTitle" id="JobTitle" class="form-control" [(ngModel)]="careerService.formData.JobTitle"
+            #JobTitle="ngModel"
+            [ngClass]="{'valid-marker' : JobTitle.value != 0, 'invalid-marker': JobTitle.value==0 && JobTitle.touched}">
+            <option [value]="0" [disabled]="true" selected="selected">Job Title</option>
+            <option *ngFor="let j of jobTitleKeys" [value]="jobTitleEnum[j]">{{ j }}</option>
+        </select>
+        <div class="alert alert-danger" [hidden]="JobTitle.valid || JobTitle.pristine">Job Title is required</div>
+    </div>
+
+    <div class="form-group">
+        <select name="Game" id="Game" class="form-control" [(ngModel)]="careerService.formData.Game" #Game="ngModel"
+            [ngClass]="{'valid-marker' : Game.value != 0, 'invalid-marker': Game.value == 0 && Game.touched}">
+            <option [value]="0" [disabled]="true" selected="selected">Game</option>
+            <option *ngFor="let g of gameKeys" [value]="gameEnum[g]">{{ g }}</option>
+        </select>
+        <div class="alert alert-danger" [hidden]="Game.valid || Game.pristine">Game is required</div>
+    </div>
+
+    <div class="form-group">
+        <select name="Location" id="Location" class="form-control" [(ngModel)]="careerService.formData.Location"
+            #Location="ngModel"
+            [ngClass]="{'valid-marker' : Location.value != 0, 'invalid-marker': Location.value == 0 && Location.touched}">
+            <option [value]="0" [disabled]="true" selected="selected">Location</option>
+            <option *ngFor="let l of locationKeys" [value]="locationEnum[l]">{{ l }}</option>
+        </select>
+        <div class="alert alert-danger" [hidden]="Location.valid || Location.pristine">Location is required</div>
+    </div>
+
+    <div class="form-group">
+        <select name="WorkType" id="WorkType" class="form-control" [(ngModel)]="careerService.formData.WorkType"
+            #WorkType="ngModel"
+            [ngClass]="{'valid-marker' : WorkType.value != 0, 'invalid-marker': WorkType.value == 0 && WorkType.touched}">
+            <option [value]="0" [disabled]="true" selected="selected">Work Type</option>
+            <option *ngFor="let w of workTypeKeys" [value]="workTypeEnum[w]">{{ w }}</option>
+        </select>
+        <div class="alert alert-danger" [hidden]="WorkType.valid || WorkType.pristine">Work Type is required</div>
+    </div>
+
+    <button type="submit" class="btn btn-success"
+        [disabled]="JobTitle.value == 0 || Game.value == 0 || Location.value == 0 || WorkType.value == 0">Submit</button>
+</form>

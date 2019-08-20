@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h3 class="display-4 text-center">Login</h3>
+        <form (submit)="onLogin(loginForm)" #loginForm="ngForm" novalidate>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            <i class="material-icons"
+                                [ngClass]="{'valid-icon': email.valid, 'invalid-icon': email.invalid && email.touched}">account_circle</i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="email" #email="ngModel"
+                        [(ngModel)]="loginService.formData.email"
+                        [ngClass]="{'valid-border': email.valid, 'invalid-border': email.invalid && email.touched}"
+                        placeholder="Email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            <i class="material-icons"
+                                [ngClass]="{'valid-icon': password.valid, 'invalid-icon': password.invalid && password.touched}">vpn_key</i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password" #password="ngModel"
+                        [ngClass]="{'valid-border': password.valid, 'invalid-border': password.invalid && password.touched}"
+                        [(ngModel)]="loginService.formData.password" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" #rememberMe="ngModel"
+                    [(ngModel)]="loginService.formData.rememberMe">
+                <label class="form-check-label" for="rememberMe">Stay Logged In (1 year)</label>
+            </div>
+            <br>
+            <div class="form-group button">
+                <button type="submit" class="btn btn-success col-md-12 center" [disabled]=loginForm.invalid><i
+                        class="material-icons">home</i> <span class="align">Login</span></button>
+            </div>
+            <div class="form-group button">
+                <a routerLink="reset-password" class="btn btn-info col-md-12"><i class="material-icons">sync</i> <span
+                        class="align">Reset Password</span></a>
+            </div>
+            <div class="form-group button">
+                <a routerLink="/create-account" class="btn btn-primary col-md-12"><i class="material-icons">edit</i>
+                    <span class="align">Sign Up</span></a>
+            </div>
+        </form>
+    </div>
+</div>

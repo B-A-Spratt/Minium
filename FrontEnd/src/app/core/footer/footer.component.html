@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <!-- brand -->
+    <mat-toolbar-row>
+        <a routerLink="">
+            <img src="https://placeholder.pics/svg/200x100/DEDEDE/555555/brand" alt="brand" class="brand">
+        </a>
+    </mat-toolbar-row>
+
+    <!-- misc links, diplayed if not using a handset-->
+    <mat-toolbar-row *ngIf="!(isHandset$ | async)">
+        <button mat-button routerLink="about-us">About Us</button>
+        <button mat-button routerLink="our-story">Our Story</button>
+        <button mat-button routerLink="the-team">The Team</button>
+        <button mat-button routerLink="careers">Careers</button>
+        <button mat-button routerLink="contact-us">Contact Us</button>
+    </mat-toolbar-row>
+
+    <!-- copyright info -->
+    <mat-toolbar-row>
+        &copy; 2019 FlashFrost Studios, all rights reserved
+    </mat-toolbar-row>
+
+    <!-- privacy terms cookies -->
+    <mat-toolbar-row>
+        <button mat-button routerLink="privacy">Privacy</button>
+        <button mat-button routerLink="terms">Terms</button>
+        <button mat-button routerLink="cookies">Cookies</button>
+    </mat-toolbar-row>
+</mat-toolbar>

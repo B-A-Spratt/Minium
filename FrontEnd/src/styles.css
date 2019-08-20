@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* don't let the window get too small */
+html {
+    min-width: 360px;
+}
+
+/* add gradient to background */
+.mat-drawer-container {
+    background-image: linear-gradient(to bottom right, rgb(0, 125, 255), rgb(125, 255, 255));
+}
+
+/* add flex to the webpage vertically */
+.mat-drawer-content {
+    display: flex !important;
+    flex-direction: column;
+}
+
+/* pushes the footer to the bottom */
+.container {
+    flex: 1 0 auto;
+    margin: 50px auto;
+}
+
+/* change button font size */
+.mat-button {
+    font-size: 1rem;
+}
+
+/* remove dotted selection */
+.mat-button:active,
+.mat-button:focus,
+a,
+.a:active,
+.a:focus {
+    outline: none;
+}
+
+.display-4 {
+    margin-bottom: 25px;
+}
+
+.form-check-input {
+    margin-top: .4rem;
+}
+
+.martial-icons {
+    margin-top: 25px;
+}
+
+.button {
+    margin-bottom: .5rem;
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+.align {
+    vertical-align: middle;
+}
+
+.invalid-border {
+    border-color: red;
+}
+
+.valid-border {
+    border-color: green;
+}
+
+.valid-icon {
+    color: green;
+}
+
+.invalid-icon {
+    color: red;
+}
+
+.form-check-input:hover,
+.form-check-label {
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Game</th>
+            <th>Location</th>
+            <th>Work Type</th>
+            <th>Post Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of careerService.list;">
+            <td (click)="populateForm(c)">{{ jobTitleEnum[c.JobTitle] }}</td>
+            <td (click)="populateForm(c)">{{ gameEnum[c.Game] }}</td>
+            <td (click)="populateForm(c)">{{ locationEnum[c.Location] }}</td>
+            <td (click)="populateForm(c)">{{ workTypeEnum[c.WorkType] }}</td>
+            <td (click)="populateForm(c)">{{ c.PostDate | date : "yyyy/MM/dd" }}</td>
+            <td>
+                <i class="material-icons invalid-icon" (click)="onDelete(c.Id)">delete</i>
+            </td>
+        </tr>
+    </tbody>
+</table>
